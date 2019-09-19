@@ -1,5 +1,5 @@
 <?php
-require "./function/funciton.php";
+require "./function/crud.php";
 $id = $_GET['id'];
 
 if (delete($id) > 0) {

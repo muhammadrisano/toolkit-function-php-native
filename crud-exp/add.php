@@ -1,7 +1,7 @@
 <?php
-require('./function/funciton.php');
+require('./function/crud.php');
 if (isset($_POST['submit'])) {
-    if (adddata($_POST) >= 1) {
+    if (insert($_POST) >= 1) {
         echo "<script>
         alert('Data berhasil ditambahkan');
         document.location.href='index.php'; 

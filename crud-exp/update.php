@@ -1,16 +1,19 @@
 <?php
-require('./function/funciton.php');
+require('./function/crud.php');
 $id = $_GET['id'];
 
 $siswa = query("SELECT siswa.*, kelas.kelas_nama, kelas.kelas_wali FROM siswa INNER JOIN kelas ON siswa.siswa_kelas = kelas.kelas_id WHERE siswa_id = $id")[0];
-if (isset($_POST['submit'])) {
-    if (adddata($_POST) >= 1) {
+if (isset($_POST['update'])) {
+    if (update($_POST) >= 1) {
         echo "<script>
-        alert('Data berhasil ditambahkan');
-        document.location.href='index.php'; 
+            alert('Data berhasil ditambahkan');
+            document.location.href = 'index.php'; 
         </script>";
     } else {
-        echo "<script>alert('salah')</script>";
+        echo "<script>
+            alert('Data Gagal ditambahkan');
+            document.location.href = 'index.php'; 
+        </script>";
     };
 }
 ?>
@@ -34,6 +37,7 @@ if (isset($_POST['submit'])) {
         <div class="row">
             <div class="col-6">
                 <form method="post" action="">
+                    <input type="hidden" name="id" id="id" value="<?= $id; ?>">
                     <div class="form-group">
                         <label for="nama_siswa">Nama</label>
                         <input type="text" class="form-control" name="nama" id="nama_siswa" placeholder="Nama siswa" value="<?= $siswa['siswa_nama']; ?>">

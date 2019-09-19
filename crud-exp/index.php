@@ -1,5 +1,5 @@
 <?php
-require('./function/funciton.php');
+require('./function/crud.php');
 $siswa = query("SELECT siswa.*, kelas.kelas_nama, kelas.kelas_wali FROM siswa INNER JOIN kelas ON siswa.siswa_kelas = kelas.kelas_id");
 
 ?>

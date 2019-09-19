@@ -13,7 +13,7 @@ function query($query)
     }
     return $data;
 }
-function adddata($data)
+function insert($data)
 {
 
     global $conn;
@@ -44,5 +44,7 @@ function update($data)
     $siswa_tgl_lahir = $data['tgl_lahir'];
     $siswa_kelas = $data['kelas_id'];
     $id = $data['id'];
-    mysqli_query($conn, "UPDATE siswa SET siswa_nama ='$siswa_nama', siswa_alamat ='$siswa_alamat' WHERE id = $id ");
+    $query = "UPDATE siswa SET siswa_nama = '$siswa_nama', siswa_alamat='$siswa_alamat', siswa_tgl_lahir='$siswa_tgl_lahir', siswa_kelas='$siswa_kelas' WHERE id='$id'";
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
 }
